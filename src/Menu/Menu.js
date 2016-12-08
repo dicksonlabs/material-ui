@@ -65,6 +65,10 @@ class Menu extends Component {
      */
     disableAutoFocus: PropTypes.bool,
     /**
+     * Override the inline-styles of the optional `Divider` elements between `MenuItem` elements.
+     */
+    dividerStyle: PropTypes.object,
+    /**
      * If true, the menu will be keyboard-focused initially.
      */
     initiallyKeyboardFocused: PropTypes.bool,
@@ -468,6 +472,7 @@ class Menu extends Component {
       children,
       desktop,
       disableAutoFocus, // eslint-disable-line no-unused-vars
+      dividerStyle,
       initiallyKeyboardFocused, // eslint-disable-line no-unused-vars
       listStyle,
       maxHeight, // eslint-disable-line no-unused-vars
@@ -487,6 +492,7 @@ class Menu extends Component {
 
     const mergedRootStyles = Object.assign(styles.root, style);
     const mergedListStyles = Object.assign(styles.list, listStyle);
+    const mergedDividerStyles = Object.assign(styles.divider, dividerStyle);
 
     const filteredChildren = this.getFilteredChildren(children);
 
@@ -495,7 +501,7 @@ class Menu extends Component {
       const childIsADivider = child.type && child.type.muiName === 'Divider';
       const childIsDisabled = child.props.disabled;
 
-      const clonedChild = childIsADivider ? React.cloneElement(child, {style: styles.divider}) :
+      const clonedChild = childIsADivider ? React.cloneElement(child, {style: mergedDividerStyles}) :
         childIsDisabled ? React.cloneElement(child, {desktop: desktop}) :
         this.cloneMenuItem(child, menuItemIndex, styles, index);
 
