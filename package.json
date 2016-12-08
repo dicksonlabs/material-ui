@@ -5,13 +5,6 @@
   "version": "0.16.4",
   "description": "React Components that Implement Google's Material Design.",
   "main": "./src/index.js",
-  "files": [
-    "build/",
-    "CONTRIBUTING.md",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
   "keywords": [
     "react",
     "react-component",
